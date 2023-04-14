@@ -1,9 +1,11 @@
+import MainPageView from "@/container/MainPage/MainPageView";
 import styled from "styled-components";
 
 export default function Home() {
   return (
     <div>
-      <Hi>hello</Hi>
+      hello
+      <MainPageView/>
     </div>
   );
 }
