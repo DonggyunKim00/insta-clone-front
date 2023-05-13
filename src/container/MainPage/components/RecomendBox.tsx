@@ -1,102 +1,125 @@
 import React from 'react';
-import styled from 'styled-components';
-import Image from 'next/image'
-import testImage from 'src/public/MainPage/free-icon-instagram-174855.png'
+import styled, { css } from 'styled-components';
+import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
 const RecomendCardWraper = styled.div`
     align-items:center;
     box-sizing:border-box;
     color:black;
-    direction:ltr;
     display:flex;
     flex-direction:row;
-    flex-wrap:nowrap;
     font-size:14px;
     justify-content:space-between;
     list-style-position:outside;
     text-align:start;
-`;
-const RecomendCardContentWaper = styled.div`
-    display:flex;
-    flex-direction:column;
-    flex-wrap:nowrap;
-    flex-grow:1;
-    margin-left:12px;
-`;
-
-const TestBox=styled.div`
-    display:block;
-`;
-const FollowerButton=styled.button`
     padding-left:16px;
     padding-right:16px;
-    padding-top:7px;
-    padding-bottom:7px;
-    box-sizing:border-box;
-    font-weight:600;
-    color:white;
-    position:relative;
-    border-radius:8px;
-    border:0px;
-    background-color:rgb(0,149,246);
+    padding-top:8px;
+    padding-bottom:8px;
+`;
+const CardContainer = styled.div`
+    display:flex;
+    flex-direction:column;
+    box-sizing: border-box;
+    flex-grow:1;
+    flex-shrink:0;
+`;
+const CardTitle = styled.div`
+    display:flex;
+    flex-direction:row;
+    & >span{
+    font-weight:600;    
+    font-size:14px;
+    line-height:18px;
+    color:black;
+    }
+
+    & >div{
+        margin-left:4px;
+    }
+`;
+const CardContentText = styled.span`   
+    font-size:12px;
+    line-height:16px;
+    color:rgb(115,115,115);
 `;
 
-const CardTitle = styled.span`
+const FollowButton=styled.button<{shape?:string}>`
     font-weight:600;
-`
+    padding:0px;
+    font-size:12px;
+    flex-shrink:0;
+    flex-grow:0;
+    margin-left:12px;
+    border: 0px;
+    position: relative;
+    width: 36px;
+    margin-top: -2px;
+    margin-bottom: -3px;
 
-const RecomendBox = () => {
+    ${(props=>props.shape==='button'?
+    css`
+        color:rgb(255,255,255);
+        border-radius:8px;
+        background-color:rgb(0,149,246);
+        box-sizing:border-box;
+        padding-left:16px;
+        padding-right:16px;
+        padding-top:7px;
+        padding-bottom:7px;
+        `
+    :
+    css`
+        color:rgb(0,149,246);
+        background-color:transparent;
+        :hover{
+            color:rgb(0, 55, 107);
+        }
+    `
+    )};
+    
+`;
+const CardImage=styled.div`
+    display:block;
+    margin-right:12px;
+    flex-shrink:0;
+    height:34px;
+    & >span{
+        margin-left:-5px;
+        margin-right:-5px;
+        border-radius:50%;
+    }
+    
+`;
+
+interface Props{
+    title:string,
+    text:string,
+    image:StaticImageData | string,
+    isFollowing?:boolean,
+}
+
+const RecomendBox = (props:Props) => {
     return ( 
-        <TestBox>
             <RecomendCardWraper>
-            <Image src={testImage} width={44} height={44} alt='이미지'/>
-            <RecomendCardContentWaper>
-                {/* <Link href={'/ExamplePage'}>
-                <a></a>
-                    
-                </Link> */}
-                <CardTitle>Instagram</CardTitle>
-                <span>글</span>
-            </RecomendCardContentWaper>
-            <FollowerButton>대충팔로우</FollowerButton>
+            <CardImage>
+                    <Image src={props.image} width={32} height={32} alt='이미지'/>
+            </CardImage>
+            <CardContainer>
+                <CardTitle>
+                    <span>
+                    {props.title}
+                    </span>
+                    <div>
+                        <Image src='/MainPage/free-icon-verified-7641727.png' width={12} height={12} alt='이미지'/>
+                    </div>
+                </CardTitle>
+                <CardContentText>{props.text}</CardContentText>
+            </CardContainer>
+            <Link href='/'>
+                <FollowButton>{props.isFollowing?"팔로잉":"팔로우"}</FollowButton>
+            </Link>
             </RecomendCardWraper>
-            <RecomendCardWraper>
-            <Image src={testImage} width={44} height={44} alt='이미지'/>
-            <RecomendCardContentWaper>
-                {/* <Link href={'/ExamplePage'}>
-                <a></a>
-                    
-                </Link> */}
-                <CardTitle>Instagram</CardTitle>
-                <span>글</span>
-            </RecomendCardContentWaper>
-            <FollowerButton>대충팔로우</FollowerButton>
-            </RecomendCardWraper>
-            <RecomendCardWraper>
-            <Image src={testImage} width={44} height={44} alt='이미지'/>
-            <RecomendCardContentWaper>
-                {/* <Link href={'/ExamplePage'}>
-                <a></a>
-                    
-                </Link> */}
-                <CardTitle>Instagram</CardTitle>
-                <span>글</span>
-            </RecomendCardContentWaper>
-            <FollowerButton>대충팔로우</FollowerButton>
-            </RecomendCardWraper>
-            <RecomendCardWraper>
-            <Image src={testImage} width={44} height={44} alt='이미지'/>
-            <RecomendCardContentWaper>
-                {/* <Link href={'/ExamplePage'}>
-                <a></a>
-                    
-                </Link> */}
-                <CardTitle>Instagram</CardTitle>
-                <span>글</span>
-            </RecomendCardContentWaper>
-            <FollowerButton>대충팔로우</FollowerButton>
-            </RecomendCardWraper>
-        </TestBox>
     );
 }
     
