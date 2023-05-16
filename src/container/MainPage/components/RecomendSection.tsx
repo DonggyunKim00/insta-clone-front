@@ -8,15 +8,17 @@ import Link from 'next/link';
 const RecomendSectionWrapper=styled.div`
     display: block;
     flex-shrink: 0;
-    height: 100%    ;
-    left: 815.9px;
+    height: 100vh;
     margin-bottom: 30px;
-    max-width: 347px;
+    max-width: 319px;
     padding-top: 30px;
-    position: sticky;
+    position: absolute;
     right: 0px;
     top: 0px;
     width: 100% ;
+    @media screen and (max-width: 1160px) {
+        display:none;
+  }
 `;
 
 const RecomendListLayout=styled.div`
@@ -24,16 +26,16 @@ const RecomendListLayout=styled.div`
     font-size:14px;
     font-weight:400;
     line-height:18px;
-    width:20rem;
+    width:calc(100% + 32px);
 `;
 const RecomendListWraper= styled.div`
-    box-sizing:border-box;
     color:black;
     display:block;
     flex-direction:column;
     font-size:14px;
     line-height:18px;
-    margin-top:16px;
+    margin-top:12px;
+    margin-bottom:-16px;
 `;
 
 const RecomendListTop = styled.span`
@@ -85,6 +87,16 @@ const dummy =[
     {
         title: "김",
         text: "사사사",
+        image: testImage
+    },
+    {
+        title: "다섯 번째 제목",
+        text: "세 번째 글 내용입니다.",
+        image: testImage
+    },
+    {
+        title: "다섯 번째 제목",
+        text: "세 번째 글 내용입니다.",
         image: testImage
     },
     {

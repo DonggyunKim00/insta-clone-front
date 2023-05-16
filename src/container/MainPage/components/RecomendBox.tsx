@@ -97,9 +97,10 @@ interface Props{
     text:string,
     image:StaticImageData | string,
     isFollowing?:boolean,
+    isButton?:boolean,
 }
 
-const RecomendBox = (props:Props) => {
+const RecomendBox = ({isButton=true, ...props}:Props) => {
     return ( 
             <RecomendCardWraper>
             <CardImage>
@@ -116,9 +117,14 @@ const RecomendBox = (props:Props) => {
                 </CardTitle>
                 <CardContentText>{props.text}</CardContentText>
             </CardContainer>
-            <Link href='/'>
-                <FollowButton>{props.isFollowing?"팔로잉":"팔로우"}</FollowButton>
-            </Link>
+            {
+                isButton?(
+                    <Link href='/'>
+                    <FollowButton>{props.isFollowing?"팔로잉":"팔로우"}</FollowButton>
+                    </Link>
+                ):(<></>)
+                
+            }
             </RecomendCardWraper>
     );
 }

@@ -1,21 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
+import StorySide from './StorySide';
 const Testdiv=styled.div`
     width:630px;
-    height:100%;
+    height:200vh;
+    margin-top:10px;
+    display:flex;
+    flex-direction:column;
+    @media screen and (min-width:1160px) {
+        float: left;
+        margin-right:64px;
+    }
+    
+`;
+const TestFeed=styled.div`
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width:630px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    overflow-x: visible;
+    overflow-y: visible;
+    align-items:center;
 `
-const TestSection=styled.section`
-    margin:auto;
-    flex-grow:1;
-`
-function HomeFeedSection() {
+function HomeFeed() {
     return (
-        <TestSection>
         <Testdiv>
-            갈
+            <StorySide/>
+            <TestFeed>
+                갈!
+            </TestFeed>
         </Testdiv>
-        </TestSection>
     );
 }
 
-export default HomeFeedSection;
+export default HomeFeed;

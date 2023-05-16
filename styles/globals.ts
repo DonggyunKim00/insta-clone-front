@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
     }
     body{
         font-family: 'Noto Sans KR', sans-serif;
-        background-color: #FFFFFF;
+        background-color: #FAFAFA;
     }
     ol, ul{
         list-style: none;
