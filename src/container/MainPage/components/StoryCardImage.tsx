@@ -56,6 +56,7 @@ const StoryCardImage = styled.div<StoryCardProps>`
 `;
 
 //일단 이거만, 나중에 여러 스토리카드 부분 재사용할수있도록, 훗날 기본값 잘 잡아서 잘..
+//하이라이트 테두리아니면 크기줄어듬 2px
 const StoryCard =(props:StoryCardProps)=>{
     return (
         <StoryCardImage width={props.width} height={props.height}>

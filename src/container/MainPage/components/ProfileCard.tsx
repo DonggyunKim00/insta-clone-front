@@ -32,11 +32,18 @@ const ChangeButton=styled.button<{shape?:string}>`
             color:rgb(0, 55, 107);
         }
 `;
-
-function ProfileCard() {
+interface UserData{
+    id: string,
+    name:string,
+    image:any
+}
+type Props={
+   userData:UserData
+}
+function ProfileCard({userData}:Props) {
     return (
         <ProfileCardLayout>
-            <RecomendBox title={'lif2delet3n'} text={'정지훈'} image={''} isButton={false} />
+            <RecomendBox title={userData.id} text={userData.name} image={ userData.image||'/MainPage/free-icon-instagram-174855.png'} isButton={false} />
             <ChangeButton>전환</ChangeButton>
         </ProfileCardLayout>
     );

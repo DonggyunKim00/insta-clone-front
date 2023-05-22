@@ -39,8 +39,13 @@ const HomeSection=styled.section<{maxWidth?:number}>`
     }
         
 `;
+type Props={
+    userData?:any
+    feedData?:any
+    followData?:any
+}
 
-const MainPageView = () => {
+const MainPageView = ({userData, feedData, followData}:Props) => {
     return (  
         <HomeLayout>
             <SideNav />
@@ -48,7 +53,7 @@ const MainPageView = () => {
                 <div>
                     <HomeSection>
                         <HomeFeed/>
-                        <RecomendSection />
+                        <RecomendSection userData={userData} recomendData={followData} />
                     </HomeSection>
                 </div>
             </HomeMain>

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import RecomendBox from './RecomendBox';
 import ProfileCard from './ProfileCard';
-import testImage from 'public/MainPage/free-icon-instagram-174855.png'
 import Link from 'next/link';
 const RecomendSectionWrapper=styled.div`
     display: block;
@@ -78,55 +77,16 @@ const RecomendListTopWrapper=styled.div`
         }
     }
 `
-const dummy =[
-    {
-        title: "Instagram",
-        text: "글내용",
-        image: testImage
-    },
-    {
-        title: "김",
-        text: "사사사",
-        image: testImage
-    },
-    {
-        title: "다섯 번째 제목",
-        text: "세 번째 글 내용입니다.",
-        image: testImage
-    },
-    {
-        title: "다섯 번째 제목",
-        text: "세 번째 글 내용입니다.",
-        image: testImage
-    },
-    {
-        title: "다섯 번째 제목",
-        text: "세 번째 글 내용입니다.",
-        image: testImage
-    },
-]
+const userDummy ={
+    id:"ewijefiojefw",
+    name:"정지훈",
+    Image:"/MainPage/StoryTestImage.png"
+} 
 
-const dummy2 =[
-    {
-        title: "다섯 번째 제목",
-        text: "첫 번째 글 내용입니다.",
-        image: testImage
-    },
-    {
-        title: "다섯 번째 제목",
-        text: "다섯 번째 글 내용입니다.",
-        image: testImage
-    },
-    {
-        title: "다섯 번째 제목",
-        text: "세 번째 글 내용입니다.",
-        image: testImage
-    }
-]
-const RecomendSection=()=> {
+const RecomendSection=({userData=userDummy,recomendData})=> {
     return (
         <RecomendSectionWrapper>
-            <ProfileCard/>
+            <ProfileCard userData={userData}/>
             <RecomendListLayout>
                 <RecomendListWraper>
                     <RecomendListTopWrapper>
@@ -138,7 +98,7 @@ const RecomendSection=()=> {
                     </Link>
                     </RecomendListTopWrapper>
                     <RecomendList>
-                        {dummy.map((data)=>
+                        {recomendData.map((data)=>
                             // eslint-disable-next-line react/jsx-key
                             <RecomendBox title={data.title} text={data.text} image={data.image}/>
                         )

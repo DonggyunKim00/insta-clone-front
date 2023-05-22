@@ -24,7 +24,19 @@ const TestFeed=styled.div`
     overflow-y: visible;
     align-items:center;
 `
-function HomeFeed() {
+
+interface FeedData{
+    author:string,
+    timedata:any,
+    contentStream:any,
+    content:string,
+    like:number,
+    comment?:any
+}
+type Props={
+    feedData:FeedData
+}
+function HomeFeed({}) {
     return (
         <Testdiv>
             <StorySide/>
