@@ -1,21 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import Content from "./components/Content";
+import Footer from "./components/Footer";
 import Profile from "./components/Profile";
+import SelectOption from "./components/SelectOption";
+
 const MyPage = () => {
+  const [optionNum, setOptionNum] = useState<number>(1);
+
+  const getOptionNum = (optionNum: number) => {
+    setOptionNum(optionNum);
+    return optionNum;
+  };
   return (
     <Container>
       <PageSet>
         <Profile />
-        <SelectOption></SelectOption>
-        <Content></Content>
-        <Footer></Footer>
+        <SelectOption getOptionNum={getOptionNum} />
+        <Content optionNum={optionNum} />
       </PageSet>
+      <Footer />
     </Container>
   );
 };
 
 export default MyPage;
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: auto;
   margin: 0px auto;
 `;
@@ -24,11 +37,5 @@ const PageSet = styled.div`
   flex-direction: column;
   padding: 30px 20px 0px;
   width: 975px;
-  height: 2000px;
+  height: auto;
 `;
-
-const SelectOption = styled.div`
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
-`;
-const Content = styled.div``;
-const Footer = styled.footer``;
