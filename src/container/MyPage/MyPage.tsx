@@ -38,4 +38,5 @@ const PageSet = styled.div`
   padding: 30px 20px 0px;
   width: 975px;
   height: auto;
+  margin-bottom: 30px;
 `;
