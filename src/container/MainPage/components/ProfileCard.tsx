@@ -4,10 +4,10 @@ import React from 'react';
 import styled from 'styled-components';
 import StoryCard from './StoryCardImage';
 import RecomendBox from './RecomendBox';
+import ContentsBox from './ContentsBox';
 const ProfileCardLayout=styled.div`
     align-items: center;
-    display: flex;
-    flex-direction: row;
+    display: block;
     height: 66px;
     justify-content: space-between;
     margin-bottom: 10px;
@@ -40,11 +40,15 @@ interface UserData{
 type Props={
    userData:UserData
 }
+//회원님을 위한 추천영역 위의 프로필 영역
 function ProfileCard({userData}:Props) {
     return (
         <ProfileCardLayout>
-            <RecomendBox title={userData.id} text={userData.name} image={ userData.image||'/MainPage/free-icon-instagram-174855.png'} isButton={false} />
-            <ChangeButton>전환</ChangeButton>
+            <ContentsBox title={userData.id} text={userData.name} image={ userData.image||'/MainPage/free-icon-instagram-174855.png'}>
+                <Link href={'/'}>
+                    <ChangeButton>{'전환'}</ChangeButton>
+                </Link>
+            </ContentsBox>
         </ProfileCardLayout>
     );
 }

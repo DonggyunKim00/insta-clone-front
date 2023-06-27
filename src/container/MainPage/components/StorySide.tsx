@@ -81,6 +81,7 @@ const SideLi=styled.li<{direction:'left'| 'right'}>`
     transform: ${props=>props.direction==='left'? 'translateX(0px)':props.direction==='right'? 'translateX(240px)': ''};
 `;
 
+//홈 피드영역 상단에 읽을 스토리가 있을시 보여지는 스토리 영역 리팩토링필요
 function StorySide() {
     return (
         <StoryWrapper>

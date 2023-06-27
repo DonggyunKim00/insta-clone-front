@@ -44,7 +44,8 @@ type Props={
     feedData?:any
     followData?:any
 }
-
+//pages에서 보일 홈 컴포넌트, 직접 page 컴포넌트에 집어넣어도 문제없음 디버깅을 위해 일단 이렇게함
+//가져온 sidenav는 최신커밋이 반영되지 않은상태 
 const MainPageView = ({userData, feedData, followData}:Props) => {
     return (  
         <HomeLayout>

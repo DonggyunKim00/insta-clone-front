@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import StorySide from './StorySide';
+import FeedContent from './FeedContent';
+import FeedPresentation from './FeedPresentation';
+
+
+
 const Testdiv=styled.div`
     width:630px;
     height:200vh;
@@ -13,7 +18,7 @@ const Testdiv=styled.div`
     }
     
 `;
-const TestFeed=styled.div`
+const FeedWrapper=styled.div`
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -23,28 +28,77 @@ const TestFeed=styled.div`
     overflow-x: visible;
     overflow-y: visible;
     align-items:center;
-`
+`;
 
-interface FeedData{
+const FeedBox= styled.div`
+    display:flex;
+    flex-direction:column;
+    box-sizing:border-box;
+    justify-content:center;
+    align-content:center;
+    max-width:470px;
+    width:100%;
+`;
+
+
+
+const dummy:FeedData[]=[
+    {
+    author:"유저",
+    uploadedTime:"2023-05-29T23:00:09.000Z",
+    like:30,
+    comments:[{
+        user:"S",
+        content:"S"
+    },
+    {
+        user:"Q",
+        content:"O"
+    },
+    {
+        user:"Q",
+        content:"S"
+    },
+    {
+        user:"Q",
+        content:"~"
+    },
+],
+    content:'/MainPage/FeedTestImage.jpg'
+
+    },
+
+]
+
+
+export interface FeedData{
     author:string,
-    timedata:any,
-    contentStream:any,
+    uploadedTime?:string,
+    contentStream?:any,
     content:string,
-    like:number,
-    comment?:any
+    like?:number,
+    comments?:any
 }
 type Props={
     feedData:FeedData
 }
-function HomeFeed({}) {
+//홈 중앙에 보이는 피드게시글 리스트 컴포넌트
+function HomeFeed({feedData=dummy}) {
     return (
         <Testdiv>
-            <StorySide/>
-            <TestFeed>
-                갈!
-            </TestFeed>
+            <StorySide/>{/* 화면상단 스토리영역 */}
+            <FeedWrapper>{/* 피드영역 */}
+                {feedData.map((data)=>
+                    <FeedBox key={data.author}>{/* 피드게시글 키값으로 작성자가 아닌 게시글번호를 넣는게 좋음  */}
+                        <FeedContent author={data.author} content={data.content} uploadedTime={data.uploadedTime}/>
+                        <FeedPresentation like={data.like} comments={data.comments}/>
+                    </FeedBox>
+                )}
+                
+            </FeedWrapper>
         </Testdiv>
     );
 }
 
 export default HomeFeed;
+

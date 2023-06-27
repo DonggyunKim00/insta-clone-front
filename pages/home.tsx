@@ -30,7 +30,7 @@ const dummy =[
 type Props={
     data:{title:string, text:string, image:string}
 }
-
+//더미데이터를 집어넣은 인스타그램 홈
 function home({data}:Props) {
     return (
         <MainPageView followData={data} />

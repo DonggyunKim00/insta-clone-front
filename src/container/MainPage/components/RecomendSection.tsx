@@ -79,16 +79,19 @@ const RecomendListTopWrapper=styled.div`
 `
 const userDummy ={
     id:"ewijefiojefw",
-    name:"정지훈",
-    Image:"/MainPage/StoryTestImage.png"
+    name:"홍길동",
+    image:"/MainPage/StoryTestImage.png"
 } 
-
-const RecomendSection=({userData=userDummy,recomendData})=> {
+//오른쪽에 나타나는 팔로우 추천유저 목록 컴포넌트
+const RecomendSection=({userData=userDummy,recomendData}:any)=> {
     return (
         <RecomendSectionWrapper>
-            <ProfileCard userData={userData}/>
+           
             <RecomendListLayout>
+                {/* 자기 프로필 */}
+            <ProfileCard userData={userData}/>
                 <RecomendListWraper>
+                    {/* 추천유저 리스트 상단 */}
                     <RecomendListTopWrapper>
                     <RecomendListTop>회원님을 위한 추천</RecomendListTop>
                     <Link href={'/RecomendList'}>
@@ -97,10 +100,11 @@ const RecomendSection=({userData=userDummy,recomendData})=> {
                         </a> 
                     </Link>
                     </RecomendListTopWrapper>
+                    {/* 추천유저 리스트박스 */}
                     <RecomendList>
-                        {recomendData.map((data)=>
+                        {recomendData.map((data:any)=>
                             // eslint-disable-next-line react/jsx-key
-                            <RecomendBox title={data.title} text={data.text} image={data.image}/>
+                            <RecomendBox title={data.title} text={data.text} image={data.image} isFollowing={false}/>
                         )
                         }
                     </RecomendList>
