@@ -103,9 +103,9 @@ const SideNav = () => {
 
 export default SideNav;
 
-const Container = styled.aside`
+const Container = styled.div`
   display: flex;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   flex-direction: column;
