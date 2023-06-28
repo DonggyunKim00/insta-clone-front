@@ -14,7 +14,10 @@ const SelectOption = ({ getOptionNum }: SelectOptionProps) => {
     <Container>
       <OptionList>
         <OptionItem
-          onClick={() => setOptionClick(1)}
+          onClick={() => {
+            document.documentElement.scrollTop = 0;
+            setOptionClick(1);
+          }}
           optionClick={optionClick}
           className={optionClick === 1 ? "active" : ""}
         >
@@ -84,7 +87,10 @@ const SelectOption = ({ getOptionNum }: SelectOptionProps) => {
           게시물
         </OptionItem>
         <OptionItem
-          onClick={() => setOptionClick(2)}
+          onClick={() => {
+            document.documentElement.scrollTop = 0;
+            setOptionClick(2);
+          }}
           optionClick={optionClick}
           className={optionClick === 2 ? "active" : ""}
         >
@@ -107,7 +113,10 @@ const SelectOption = ({ getOptionNum }: SelectOptionProps) => {
           저장됨
         </OptionItem>
         <OptionItem
-          onClick={() => setOptionClick(3)}
+          onClick={() => {
+            document.documentElement.scrollTop = 0;
+            setOptionClick(3);
+          }}
           optionClick={optionClick}
           className={optionClick === 3 ? "active" : ""}
         >
